@@ -1,0 +1,35 @@
+# junkreader config file
+#
+# Example content of the external accounts file:
+#
+# user@hotmail.com:password:imap-mail.outlook.com:993:#127.0.0.1:3128
+#
+# #127.0.0.1:3128 - HTTPS proxy. Prefix # at the beginning means "HTTPS". Other prefixes: + - SOCKS4, * - SOCKS5
+# You can omit proxy host:port part if you don't want to use proxy.
+# Also you can omit IMAP host:port for hotmail, yahoo and gmail domains.
+
+accountsfile: 
+  path: "accounts/acc1.txt"
+  delimiter: ":"
+
+# Example of accounts list in config:
+#
+# accounts:
+#  - username: user@hotmail.com
+#    password: password
+#    imapaddr: imap-mail.outlook.com:993
+#    proxy: 
+#      type: socks5
+#      addr: 127.0.0.1:1080
+
+# notjunkrules allows to move messages from Junk folder to Inbox. 
+# You can specify regular expression patterns for "from", "to", "cc", "bcc" and "subject" fields of the messages that you want to move from Junk folder to Inbox
+
+notjunkrules:
+  - from: "MAILER-DAEMON"
+    subject: "failure"
+  - from: "postmaster"
+
+# You can use cron expressions to specify the date and time when the junk reading task should run
+#
+# cron: "*/1 * * * *"
